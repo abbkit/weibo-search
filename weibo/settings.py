@@ -12,7 +12,7 @@ DEFAULT_REQUEST_HEADERS = {
     'Accept':
     'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8,en-US;q=0.7',
-    'cookie': 'your cookie'
+    'cookie': 'XSRF-TOKEN=1-HA_ExNCHRgu07XTmIx2qtl; login_sid_t=f10b65291fe97816d8745cf31f90dd19; cross_origin_proto=SSL; _s_tentry=weibo.com; Apache=1579767791283.7837.1677933943084; SINAGLOBAL=1579767791283.7837.1677933943084; ULV=1677933943086:1:1:1:1579767791283.7837.1677933943084:; appkey=; WBtopGlobal_register_version=2023030420; UOR=,,graph.qq.com; SSOLoginState=1677935343; WBPSESS=fcIWYuTDJCLgSQgDQ0pZNu89_wBhBpzozNaiZqtDNlfqIq63GUcBXTmB1cDrDoenEtfzXVZqkjN4R_FN8OVyopPVcyxppIINmKYbim34AO_Cc59sPhNiHlTwHvu8eu6nbiTPoi3YL97JcpSls36JAQ==; SCF=AszbOREujtumSQ_SIqC7rORrmhC8HGCnK_XHLstxDufxxEu3zDW6_rt9YeIsXUfzLNjQ03447IduLDlwVP8MeMQ.; SUB=_2A25JBzShDeRhGeFN4lAZ8C_FyzmIHXVqdSFprDV8PUNbmtAfLVf4kW9NQ6w1zhcASoPwb0ShtNqgJaaJ-_WL7v7y; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WWCGiW9_NqyPMDdmWXG7yg05JpX5KMhUgL.FoM01KzReh24eh-2dJLoIEQLxKnLB.qL12-LxK.LBKeL12-LxK-L1K5L1K2LxKBLBonL122Eeh2feh2t; ALF=1680527856; wb_view_log=2048*11521.25; wb_view_log_7392801905=2048*11521.25; PC_TOKEN=f11488dcbf; webim_unReadCount=%7B%22time%22%3A1677978050203%2C%22dm_pub_total%22%3A2%2C%22chat_group_client%22%3A0%2C%22chat_group_notice%22%3A0%2C%22allcountNum%22%3A7%2C%22msgbox%22%3A0%7D'
 }
 ITEM_PIPELINES = {
     'weibo.pipelines.DuplicatesPipeline': 300,
@@ -33,9 +33,9 @@ CONTAIN_TYPE = 0
 # 具体支持的地名见region.py文件，注意只支持省或直辖市的名字，省下面的市名及直辖市下面的区县名不支持，不筛选请用“全部”
 REGION = ['全部']
 # 搜索的起始日期，为yyyy-mm-dd形式，搜索结果包含该日期
-START_DATE = '2020-03-01'
+START_DATE = '2022-03-05'
 # 搜索的终止日期，为yyyy-mm-dd形式，搜索结果包含该日期
-END_DATE = '2020-03-01'
+END_DATE = '2022-03-05'
 # 进一步细分搜索的阈值，若结果页数大于等于该值，则认为结果没有完全展示，细分搜索条件重新搜索以获取更多微博。数值越大速度越快，也越有可能漏掉微博；数值越小速度越慢，获取的微博就越多。
 # 建议数值大小设置在40到50之间。
 FURTHER_THRESHOLD = 46

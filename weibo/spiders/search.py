@@ -354,7 +354,7 @@ class SearchSpider(scrapy.Spider):
                 weibo = WeiboItem()
                 weibo['id'] = sel.xpath('@mid').extract_first()
                 weibo['bid'] = sel.xpath(
-                    './/div[@class="from"]/a[1]/@href').extract_first(
+                    './/p[@class="from"]/a[1]/@href').extract_first(
                     ).split('/')[-1].split('?')[0]
                 weibo['user_id'] = info[0].xpath(
                     'div[2]/a/@href').extract_first().split('?')[0].split(
@@ -420,16 +420,16 @@ class SearchSpider(scrapy.Spider):
                 comments_count = re.findall(r'\d+.*', comments_count)
                 weibo['comments_count'] = comments_count[
                     0] if comments_count else '0'
-                attitudes_count = sel.xpath(
-                    '(.//span[@class="woo-like-count"])[last()]/text()').extract_first()
-                attitudes_count = re.findall(r'\d+.*', attitudes_count)
-                weibo['attitudes_count'] = attitudes_count[
-                    0] if attitudes_count else '0'
+                # attitudes_count = sel.xpath(
+                #     '(.//span[@class="woo-like-count"])[last()]/text()').extract_first()
+                # attitudes_count = re.findall(r'\d+.*', attitudes_count)
+                # weibo['attitudes_count'] = attitudes_count[
+                #     0] if attitudes_count else '0'
                 created_at = sel.xpath(
-                    './/div[@class="from"]/a[1]/text()').extract_first(
+                    './/p[@class="from"]/a[1]/text()').extract_first(
                     ).replace(' ', '').replace('\n', '').split('前')[0]
                 weibo['created_at'] = util.standardize_date(created_at)
-                source = sel.xpath('.//div[@class="from"]/a[2]/text()'
+                source = sel.xpath('.//p[@class="from"]/a[2]/text()'
                                    ).extract_first()
                 weibo['source'] = source if source else ''
                 pics = ''
@@ -519,3 +519,8 @@ class SearchSpider(scrapy.Spider):
                     weibo['retweet_id'] = retweet['id']
                 print(weibo)
                 yield {'weibo': weibo, 'keyword': keyword}
+
+
+from scrapy.cmdline import execute
+# debug scrapy...
+execute(['scrapy', 'crawl', 'search'])
